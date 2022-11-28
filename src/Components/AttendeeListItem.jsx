@@ -23,12 +23,13 @@ const Name = styled.div`
 `
 
 const Email = styled.div`
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   font-size: 15px;
 `
 
 const Age = styled.div`
-  font-weight: 400;
+  font-weight: 600;
   font-size: 15px;
 `
 

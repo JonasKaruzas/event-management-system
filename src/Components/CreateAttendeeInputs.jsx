@@ -16,14 +16,18 @@ const Button = styled.button`
   background-color: #EB6440;
   border: none;
   border-radius: 5px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: 600;
+  cursor: pointer; 
 
   :hover {
     transform: translateY(-3px);
+    box-shadow: 0px 10px 20px 0px #a4a4a430;
   }
   
   :active {
-    transform: translateY(3px);
+    transform: translateY(0px);
+    box-shadow: none;
   }
 `
 
@@ -55,7 +59,7 @@ export function CreateAttendeeInputs() {
         <Input ref={lastName} type='text' name='lastName' placeholder="Last name" required />
         <Input ref={email} type='email' name='email' placeholder="Email" required />
         <Input ref={age} type='number' name='age' placeholder="Age" required />
-        <Button>Submit</Button>
+        <Button>ADD</Button>
       </Form>
   )
 }

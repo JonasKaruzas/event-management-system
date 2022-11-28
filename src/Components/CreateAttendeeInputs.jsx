@@ -1,4 +1,31 @@
 import { useRef } from "react";
+import styled from "styled-components"
+
+const Form = styled.form`
+  display: flex;
+  gap: 10px;
+  padding-bottom: 60px;
+`
+
+const Input = styled.input`
+  padding: 10px;
+`
+
+const Button = styled.button`
+  padding: 12px;
+  background-color: #EB6440;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.2s;
+
+  :hover {
+    transform: translateY(-3px);
+  }
+  
+  :active {
+    transform: translateY(3px);
+  }
+`
 
 export function CreateAttendeeInputs() {
 
@@ -23,12 +50,12 @@ export function CreateAttendeeInputs() {
   }
 
   return (
-      <form onSubmit={submitHandler}> 
-        <input ref={firstName} type='text' name='firstName' placeholder="First name" required />
-        <input ref={lastName} type='text' name='lastName' placeholder="Last name" required />
-        <input ref={email} type='email' name='email' placeholder="Email" required />
-        <input ref={age} type='number' name='age' placeholder="Age" required />
-        <button>Submit</button>
-      </form>
+      <Form onSubmit={submitHandler}> 
+        <Input ref={firstName} type='text' name='firstName' placeholder="First name" required />
+        <Input ref={lastName} type='text' name='lastName' placeholder="Last name" required />
+        <Input ref={email} type='email' name='email' placeholder="Email" required />
+        <Input ref={age} type='number' name='age' placeholder="Age" required />
+        <Button>Submit</Button>
+      </Form>
   )
 }

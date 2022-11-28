@@ -5,11 +5,11 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 30px;
-  padding: 5px;
-`
-
-const Title = styled.div`
+  height: 40px;
+  padding: 10px;
+  `
+  
+  const Title = styled.div`
   font-size: 40px;
   font-weight: 500;
   padding-bottom: 40px;

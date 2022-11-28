@@ -5,8 +5,8 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 30px;
-  padding: 5px;
+  height: 40px;
+  padding: 10px;
 
   :nth-child(odd) {
     background-color: #EFF5F5;

@@ -1,5 +1,11 @@
-export function AttendeeListItem() {
+export function AttendeeListItem( {attendee} ) {
   return (
-    <div>I Am a List Item</div>
-  )
-}
+    <div>
+      <div>{attendee.firstName}</div>
+      <div>{attendee.lastName}</div>
+      <div>{attendee.email}</div>
+      <div>{attendee.age}</div>
+    </div>
+    )
+  }
+  

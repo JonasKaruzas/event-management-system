@@ -1,3 +1,5 @@
+import { Dashboard } from "./Components/Dashboard";
+
 export function App() {
-  return <div className="App">Labas</div>;
+  return <Dashboard />;
 }

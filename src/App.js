@@ -5,7 +5,7 @@ import "./Assets/Styles/App.css";
 export function App() {
   return (
     <AttendeeListState>
-      <Dashboard />;
+      <Dashboard />
     </AttendeeListState>
   );
 }

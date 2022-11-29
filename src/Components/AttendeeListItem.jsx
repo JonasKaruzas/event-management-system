@@ -23,11 +23,13 @@ const Card = styled.div`
 `
 
 const Name = styled.div`
+  flex: 1;
   font-weight: 700;
   font-size: 20px;
 `
 
 const Email = styled.div`
+flex: 1;
   font-weight: 600;
   letter-spacing: 0.5px;
   font-size: 15px;
@@ -39,13 +41,19 @@ const Age = styled.div`
 `
 
 const ButtonContainer = styled.div`
+    display: flex;
+    margin-left: 0px;
     opacity: 0;
+    width: 0px;
+    overflow: hidden;
     transform: translateX(100px);
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s, width 0.3s;
     
     &.show {
-     opacity: 1;
-     transform: translateX(0);
+      margin-left: 10px;
+      width: 104px;
+      opacity: 1;
+      transform: translateX(0);
    }
 `
 

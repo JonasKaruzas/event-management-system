@@ -1,6 +1,9 @@
+import { useState } from "react";
 import styled from "styled-components"
 import deleteImg from "../Assets/Images/delete.svg";
 import pencilImg from "../Assets/Images/pencil.svg";
+
+
 
 const Card = styled.div`
   width: 100%;
@@ -35,6 +38,17 @@ const Age = styled.div`
   font-size: 15px;
 `
 
+const ButtonContainer = styled.div`
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.3s, transform 0.3s;
+    
+    &.show {
+     opacity: 1;
+     transform: translateX(0);
+   }
+`
+
 const Button = styled.button`
   border: none;
   background-color: ${props => props.delete && '#EB6440'};
@@ -57,16 +71,19 @@ const Button = styled.button`
 
 
 
+
 export function AttendeeListItem( {attendee} ) {
+  const [hoverState, setHoverState] = useState(false);
+
   return (
-    <Card>
+    <Card onMouseEnter={() => setHoverState(true)} onMouseLeave={() => setHoverState(false)}>
       <Name>{attendee.firstName} {attendee.lastName}</Name>
       <Email>{attendee.email}</Email>
       <Age>{attendee.age}</Age>
-      <div>
+      <ButtonContainer className={(hoverState ? ' show' : '')}>
         <Button edit style={{marginRight: 10}}><img src={pencilImg} alt='edit' /></Button>
         <Button delete><img src={deleteImg} alt='delete' /></Button>
-      </div>
+      </ButtonContainer>
     </Card>
     )
   }

@@ -11,8 +11,17 @@ const initialAttendeeState = [
 export function AttendeeListState({children}) {
   const [attendeeList, setAttendeeList] = useState(initialAttendeeState);
 
+  function deleteAttendee(id) {
+    const newAttendeeList = attendeeList.filter(attendee => attendee.id !== id);
+    setAttendeeList(newAttendeeList)
+  }
+
+  function editAttendee(id) {
+    console.log(id);
+  }
+
   return (
-    <AttendeeListContext.Provider value={{attendeeList, setAttendeeList}} >
+    <AttendeeListContext.Provider value={{attendeeList, setAttendeeList, editAttendee, deleteAttendee}} >
       {children}
     </AttendeeListContext.Provider>
   )

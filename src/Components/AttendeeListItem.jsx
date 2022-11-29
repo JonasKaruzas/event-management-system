@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components"
 import deleteImg from "../Assets/Images/delete.svg";
 import pencilImg from "../Assets/Images/pencil.svg";
-
-
+import { AttendeeListContext } from "./AttendeeListState";
 
 const Card = styled.div`
   width: 100%;
@@ -12,6 +11,7 @@ const Card = styled.div`
   align-items: center;
   height: 40px;
   padding: 10px;
+  overflow: hidden;
 
   :nth-child(odd) {
     background-color: #EFF5F5;
@@ -69,11 +69,9 @@ const Button = styled.button`
   }
 `
 
-
-
-
 export function AttendeeListItem( {attendee} ) {
   const [hoverState, setHoverState] = useState(false);
+  const {editAttendee, deleteAttendee} = useContext(AttendeeListContext);
 
   return (
     <Card onMouseEnter={() => setHoverState(true)} onMouseLeave={() => setHoverState(false)}>
@@ -81,8 +79,8 @@ export function AttendeeListItem( {attendee} ) {
       <Email>{attendee.email}</Email>
       <Age>{attendee.age}</Age>
       <ButtonContainer className={(hoverState ? ' show' : '')}>
-        <Button edit style={{marginRight: 10}}><img src={pencilImg} alt='edit' /></Button>
-        <Button delete><img src={deleteImg} alt='delete' /></Button>
+        <Button onClick={() => editAttendee(attendee.id)} edit style={{marginRight: 10}}><img src={pencilImg} alt='edit' /></Button>
+        <Button onClick={() => deleteAttendee(attendee.id)} delete><img src={deleteImg} alt='delete' /></Button>
       </ButtonContainer>
     </Card>
     )

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const Card = styled.div`
   width: 100%;
@@ -22,8 +23,10 @@ const ListHeader = styled.div`
 `
 
 export function AttendeeList({children}) {
+  const [animationParent] = useAutoAnimate();
+
   return (
-    <>
+    <div ref={animationParent}>
       <Title>Attendee list</Title>
       <Card>
         <ListHeader>Name</ListHeader>
@@ -31,6 +34,6 @@ export function AttendeeList({children}) {
         <ListHeader>Age</ListHeader>
       </Card>
         {children}
-    </>
+    </div>
   )
 }

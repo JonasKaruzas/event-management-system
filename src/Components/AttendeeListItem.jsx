@@ -3,7 +3,6 @@ import styled from "styled-components"
 import deleteImg from "../Assets/Images/delete.svg";
 import pencilImg from "../Assets/Images/pencil.svg";
 import { AttendeeListContext } from "./AttendeeListState";
-import { EditModal } from "./EditModal";
 
 const Card = styled.div`
   width: 100%;

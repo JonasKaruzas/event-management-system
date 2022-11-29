@@ -4,6 +4,7 @@ import { AttendeeListItem } from "./AttendeeListItem";
 import { useContext } from "react";
 import { AttendeeListContext } from "./AttendeeListState";
 import styled from "styled-components";
+import { EditModal } from "./EditModal";
 
 const Title = styled.div`
   margin-top: 20px;
@@ -15,15 +16,19 @@ const Title = styled.div`
 `
 
 export function Dashboard() {
-  const {attendeeList, setAttendeeList} = useContext(AttendeeListContext);
+  const {attendeeList, showEditModal} = useContext(AttendeeListContext);
 
   return (
     <>
       <Title>Management<br />dashboard</Title>
       <CreateAttendeeInputs />
-      <AttendeeList>
-        {attendeeList.map(attendee => <AttendeeListItem key={attendee.id} attendee={attendee} />)}
-      </AttendeeList>
+      {attendeeList.length !== 0 ? 
+        <AttendeeList>
+          {attendeeList.map(attendee => <AttendeeListItem key={attendee.id} attendee={attendee} />)}
+        </AttendeeList> :
+        <div style={{textAlign: 'center'}}>List is empty</div>
+      }
+      {showEditModal && <EditModal />}
     </>
   )
 }

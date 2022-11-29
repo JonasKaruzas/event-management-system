@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 export const AttendeeListContext = createContext();
 
 const initialAttendeeState = [
@@ -10,18 +9,22 @@ const initialAttendeeState = [
 
 export function AttendeeListState({children}) {
   const [attendeeList, setAttendeeList] = useState(initialAttendeeState);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   function deleteAttendee(id) {
     const newAttendeeList = attendeeList.filter(attendee => attendee.id !== id);
     setAttendeeList(newAttendeeList)
   }
-
+  
   function editAttendee(id) {
+    const editableAttendee = attendeeList.find(attendee => attendee.id === id);
+    setShowEditModal(true);
     console.log(id);
+    console.log(editableAttendee);
   }
 
   return (
-    <AttendeeListContext.Provider value={{attendeeList, setAttendeeList, editAttendee, deleteAttendee}} >
+    <AttendeeListContext.Provider value={{attendeeList, setAttendeeList, editAttendee, deleteAttendee, showEditModal, setShowEditModal}} >
       {children}
     </AttendeeListContext.Provider>
   )

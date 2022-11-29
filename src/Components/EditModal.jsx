@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import ReactDOM from "react-dom"
 import styled from "styled-components";
 import { AttendeeListContext } from "./AttendeeListState";

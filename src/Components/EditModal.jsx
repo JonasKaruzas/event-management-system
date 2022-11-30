@@ -38,12 +38,25 @@ const Content = styled.div`
 `
 const Form = styled.form`
   display: flex;
+  justify-content: space-between;
   gap: 10px;
   padding-bottom: 60px;
+
+@media (max-width: 850px) {
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
 `
 
 const Input = styled.input`
   padding: 10px;
+  width: 160px;
+
+@media (max-width: 850px) {
+  width: 100%;
+}
 `
 
 const Button = styled.button`

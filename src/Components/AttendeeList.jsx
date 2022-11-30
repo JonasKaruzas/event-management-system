@@ -8,6 +8,10 @@ const Card = styled.div`
   align-items: center;
   height: 40px;
   padding: 10px;
+
+  @media (max-width: 850px) {
+    display: none;
+  }
   `
   
   const Title = styled.div`
@@ -15,6 +19,10 @@ const Card = styled.div`
   font-weight: 500;
   padding-bottom: 40px;
   color: #497174;
+
+  @media (max-width: 850px) {
+    text-align: center;
+  }
 `
 
 const ListHeader = styled.div`

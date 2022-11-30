@@ -12,6 +12,7 @@ const Card = styled.div`
   height: 40px;
   padding: 10px;
   overflow: hidden;
+  transition: height 0.2s;
 
   :nth-child(odd) {
     background-color: #EFF5F5;
@@ -20,24 +21,55 @@ const Card = styled.div`
   :hover {
     color: #EB6440;
   }
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    gap: 8px;
+    height: 96px;
+    
+    :hover {
+      height: 137px;
+    }
+  }
 `
 
 const Name = styled.div`
   flex: 1;
   font-weight: 700;
   font-size: 20px;
-`
-
-const Email = styled.div`
-flex: 1;
+  
+  @media (max-width: 850px) {
+    :before {
+      content: 'Name: ';
+      font-weight: 400;
+    }
+  }
+  `
+  
+  const Email = styled.div`
+  flex: 1;
   font-weight: 600;
   letter-spacing: 0.5px;
   font-size: 15px;
-`
-
-const Age = styled.div`
+  
+  @media (max-width: 850px) {
+    :before {
+      content: 'Email: ';
+      font-weight: 400;
+    }
+  }
+  `
+  
+  const Age = styled.div`
   font-weight: 600;
   font-size: 15px;
+  
+  @media (max-width: 850px) {
+    :before {
+      content: 'Age: ';
+      font-weight: 400;
+    }
+  }
 `
 
 const ButtonContainer = styled.div`
@@ -54,7 +86,17 @@ const ButtonContainer = styled.div`
       width: 104px;
       opacity: 1;
       transform: translateX(0);
+    }
+    
+    @media (max-width: 850px) {
+      width: 104px;
+      transform: translateX(0px);
+      
+      &.show {
+        margin-left: 0px;
+    }
    }
+
 `
 
 const Button = styled.button`

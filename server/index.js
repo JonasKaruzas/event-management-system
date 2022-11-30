@@ -2,16 +2,31 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+const { getAll, addAttendee, deleteAttendee, updateAttendee } = require("./db_handler");
+
+app.get("/users", async (req, res) => {
+  const data = await getAll();
+  res.send(data);
 });
 
-app.get("/", (req, res) => {
-  res.send("Hi world");
+app.post("/users", (req, res) => {
+  addAttendee(req.body.firstName, req.body.lastName, req.body.email, req.body.age);
+  res.send("ok");
+});
+
+app.delete("/users/:id", (req, res) => {
+  const { id } = req.params;
+  deleteAttendee(id);
+  res.send("ok");
+});
+
+app.put("/users/:id", (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  updateAttendee(id, body.firstName, body.lastName, body.email, body.age);
+  res.send("ok");
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Server running on localhost:${port}`);
 });

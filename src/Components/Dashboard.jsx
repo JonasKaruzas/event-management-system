@@ -1,7 +1,7 @@
 import { CreateAttendeeInputs } from "./CreateAttendeeInputs";
 import { AttendeeList } from "./AttendeeList";
 import { AttendeeListItem } from "./AttendeeListItem";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AttendeeListContext } from "./AttendeeListState";
 import styled from "styled-components";
 import { EditModal } from "./EditModal";
@@ -16,7 +16,13 @@ const Title = styled.div`
 `
 
 export function Dashboard() {
-  const {attendeeList, showEditModal} = useContext(AttendeeListContext);
+  const {attendeeList, setAttendeeList, showEditModal} = useContext(AttendeeListContext);
+  useEffect(() => {
+    fetch('/users')
+    .then(res => res.json())
+    .then(attendees => setAttendeeList(attendees))
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>

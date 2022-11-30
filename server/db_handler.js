@@ -5,7 +5,7 @@ const db = new sqlite3.Database(path.join(__dirname, "./attendees.sqlite"));
 
 function getAll() {
   return new Promise((res, rej) => {
-    db.all("SELECT * FROM Attendees", [], (err, rows) => {
+    db.all("SELECT rowid AS id, * FROM Attendees", [], (err, rows) => {
       if (err) {
         rej(err);
       }

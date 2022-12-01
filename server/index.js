@@ -14,10 +14,10 @@ app.post("/users", (req, res) => {
   res.send("ok");
 });
 
-app.delete("/users/:id", (req, res) => {
+app.delete("/users/:id", async (req, res) => {
   const { id } = req.params;
-  deleteAttendee(id);
-  res.send("ok");
+  const data = await deleteAttendee(id);
+  res.send(data);
 });
 
 app.put("/users/:id", (req, res) => {

@@ -7,9 +7,13 @@ export function AttendeeListState({children}) {
   const [editableAttendee, setEditableAttendee] = useState({});
   const [loadingData, setLoadingData] = useState(false);
 
-  function deleteAttendee(id) {
-    const newAttendeeList = attendeeList.filter(attendee => attendee.id !== id);
-    setAttendeeList(newAttendeeList)
+  async function deleteAttendee(id) {
+    const response = await fetch(`/users/${id}`, {
+      method: 'DELETE',
+    })  
+    
+    const attendees = await response.json();
+    setAttendeeList(attendees);
   }
   
   function editAttendee(id) {

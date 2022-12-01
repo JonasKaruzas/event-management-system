@@ -24,11 +24,13 @@ function addAttendee(firstName, lastName, email, age) {
 }
 
 function deleteAttendee(rowid) {
-  db.run("DELETE FROM Attendees WHERE rowid = (?)", [rowid], (err, row) => {
-    if (err) {
-      return err.message;
-    }
-    return row;
+  return new Promise((res, rej) => {
+    db.run("DELETE FROM Attendees WHERE rowid = (?)", [rowid], (err, row) => {
+      if (err) {
+        rej(err.message);
+      }
+      res(getAll());
+    });
   });
 }
 

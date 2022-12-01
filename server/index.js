@@ -11,9 +11,10 @@ app.get("/users", async (req, res) => {
   res.send(data);
 });
 
-app.post("/users", (req, res) => {
-  addAttendee(req.body.firstName, req.body.lastName, req.body.email, req.body.age);
-  res.send("ok");
+app.post("/users", async (req, res) => {
+  const body = req.body;
+  const data = await addAttendee(body.firstName, body.lastName, body.email, body.age);
+  res.send(data);
 });
 
 app.delete("/users/:id", async (req, res) => {

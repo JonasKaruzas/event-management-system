@@ -47,7 +47,7 @@ const Button = styled.button`
 `
 
 export function CreateAttendeeInputs() {
-  const {attendeeList, setAttendeeList} = useContext(AttendeeListContext);
+  const {addAttendee} = useContext(AttendeeListContext);
 
   const firstName = useRef();
   const lastName = useRef();
@@ -64,8 +64,7 @@ export function CreateAttendeeInputs() {
       age: age.current.value,
     }
 
-    const maxId = !attendeeList.length ? 0 : attendeeList.map(item => item.id).sort((a,b) => a - b)[attendeeList.length -1];
-    setAttendeeList([...attendeeList, {...newAttendee, id:maxId + 1}]);
+    addAttendee(newAttendee)
 
     e.target.reset();
   }

@@ -7,7 +7,7 @@ function getAll() {
   return new Promise((res, rej) => {
     db.all("SELECT rowid AS id, * FROM Attendees", [], (err, rows) => {
       if (err) {
-        rej(err);
+        rej(err.message);
       }
       res(rows);
     });
@@ -15,11 +15,13 @@ function getAll() {
 }
 
 function addAttendee(firstName, lastName, email, age) {
-  db.run("INSERT INTO Attendees (firstName, lastName, email, age) VALUES (?,?,?,?)", [firstName, lastName, email, age], (err, row) => {
-    if (err) {
-      return console.log(err.message);
-    }
-    return row;
+  return new Promise((res, rej) => {
+    db.run("INSERT INTO Attendees (firstName, lastName, email, age) VALUES (?,?,?,?)", [firstName, lastName, email, age], (err, row) => {
+      if (err) {
+        rej(err.message);
+      }
+      res(getAll());
+    });
   });
 }
 

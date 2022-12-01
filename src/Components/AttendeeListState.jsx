@@ -8,7 +8,7 @@ export function AttendeeListState({children}) {
   const [loadingData, setLoadingData] = useState(false);
 
   async function addAttendee(Attendee) {
-    const response = await fetch(`/users`, {
+    const response = await fetch(`/attendees`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ export function AttendeeListState({children}) {
   }
 
   async function deleteAttendee(id) {
-    const response = await fetch(`/users/${id}`, {
+    const response = await fetch(`/attendees/${id}`, {
       method: 'DELETE',
     })  
     
@@ -35,7 +35,7 @@ export function AttendeeListState({children}) {
   }
 
   async function saveEditableAttendee(Attendee) {
-    const response = await fetch(`/users/${Attendee.id}`, {
+    const response = await fetch(`/attendees/${Attendee.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

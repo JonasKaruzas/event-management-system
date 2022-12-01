@@ -21,7 +21,7 @@ export function Dashboard() {
 
   useEffect(() => {
     setLoadingData(true);
-    fetch('/users')
+    fetch('/attendees')
     .then(res => res.json())
     .then(attendees => {
       setLoadingData(false);

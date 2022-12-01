@@ -6,24 +6,24 @@ const port = 5000;
 app.use(bodyParser.json());
 const { getAll, addAttendee, deleteAttendee, updateAttendee } = require("./db_handler");
 
-app.get("/users", async (req, res) => {
+app.get("/attendees", async (req, res) => {
   const data = await getAll();
   res.send(data);
 });
 
-app.post("/users", async (req, res) => {
+app.post("/attendees", async (req, res) => {
   const body = req.body;
   const data = await addAttendee(body.firstName, body.lastName, body.email, body.age);
   res.send(data);
 });
 
-app.delete("/users/:id", async (req, res) => {
+app.delete("/attendees/:id", async (req, res) => {
   const { id } = req.params;
   const data = await deleteAttendee(id);
   res.send(data);
 });
 
-app.put("/users/:id", async (req, res) => {
+app.put("/attendees/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
   const data = await updateAttendee(id, body.firstName, body.lastName, body.email, body.age);

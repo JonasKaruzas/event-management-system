@@ -34,13 +34,15 @@ function deleteAttendee(rowid) {
   });
 }
 
-function updateAttendee(rowid, firstName, lastName, email, age) {
-  const sql = `UPDATE Attendees SET firstName = '${firstName}', lastName = '${lastName}', email = '${email}', age = '${age}' WHERE rowid = ${rowid}`;
-  db.run(sql, [], (err, row) => {
-    if (err) {
-      return err.message;
-    }
-    return row;
+function updateAttendee(id, firstName, lastName, email, age) {
+  return new Promise((res, rej) => {
+    const sql = `UPDATE Attendees SET firstName = '${firstName}', lastName = '${lastName}', email = '${email}', age = '${age}' WHERE rowid = ${id}`;
+    db.run(sql, [], (err, row) => {
+      if (err) {
+        rej(err.message);
+      }
+      res(getAll());
+    });
   });
 }
 

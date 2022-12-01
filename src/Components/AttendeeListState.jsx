@@ -22,12 +22,16 @@ export function AttendeeListState({children}) {
     setShowEditModal(true);
   }
 
-  function saveEditableAttendee(Attendee) {
-    const indexOfEditableAttendee = attendeeList.findIndex((person) => person.id === editableAttendee.id);
-    const newAttendeeList = [...attendeeList];
-    newAttendeeList[indexOfEditableAttendee] = Attendee;
-    setAttendeeList(newAttendeeList);
-    setEditableAttendee(undefined);
+  async function saveEditableAttendee(Attendee) {
+    const response = await fetch(`/users/${Attendee.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(Attendee),
+    })  
+    const attendees = await response.json();
+    setAttendeeList(attendees);
   }
 
   const values = {

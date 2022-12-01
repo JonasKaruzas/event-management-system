@@ -75,16 +75,14 @@ const Name = styled.div`
 const ButtonContainer = styled.div`
     display: flex;
     margin-left: 0px;
-    opacity: 0;
     width: 0px;
     overflow: hidden;
     transform: translateX(100px);
-    transition: opacity 0.3s, transform 0.3s, width 0.3s;
+    transition: transform 0.3s, width 0.3s;
     
     &.show {
       margin-left: 10px;
       width: 104px;
-      opacity: 1;
       transform: translateX(0);
     }
     

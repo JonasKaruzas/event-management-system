@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { AttendeeListContext } from "./AttendeeListState";
 import styled from "styled-components";
 import { EditModal } from "./EditModal";
+import {ScaleLoader} from "react-spinners";
 
 const Title = styled.div`
   margin-top: 20px;
@@ -16,11 +17,15 @@ const Title = styled.div`
 `
 
 export function Dashboard() {
-  const {attendeeList, setAttendeeList, showEditModal} = useContext(AttendeeListContext);
+  const {attendeeList, setAttendeeList, showEditModal, loadingData, setLoadingData} = useContext(AttendeeListContext);
+
   useEffect(() => {
+    setLoadingData(true);
     fetch('/users')
     .then(res => res.json())
-    .then(attendees => setAttendeeList(attendees))
+    .then(attendees => {
+      setLoadingData(false);
+      setAttendeeList(attendees)})
     // eslint-disable-next-line
   }, []);
 
@@ -28,11 +33,16 @@ export function Dashboard() {
     <>
       <Title>Management<br />dashboard</Title>
       <CreateAttendeeInputs />
-      {attendeeList.length !== 0 ? 
+      {(attendeeList.length === 0 ) ? 
+        <div style={{textAlign: 'center'}}>List is empty</div> :
         <AttendeeList>
-          {attendeeList.map(attendee => <AttendeeListItem key={attendee.id} attendee={attendee} />)}
-        </AttendeeList> :
-        <div style={{textAlign: 'center'}}>List is empty</div>
+          {loadingData ?
+          <div style={{textAlign: 'center', marginTop: 20}}>
+            <ScaleLoader color={'#497174'} /> 
+          </div> :
+            attendeeList.map(attendee => <AttendeeListItem key={attendee.id} attendee={attendee} />)
+          }
+        </AttendeeList> 
       }
       {showEditModal && <EditModal />}
     </>

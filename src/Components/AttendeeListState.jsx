@@ -5,7 +5,7 @@ export function AttendeeListState({children}) {
   const [attendeeList, setAttendeeList] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editableAttendee, setEditableAttendee] = useState({});
-
+  const [loadingData, setLoadingData] = useState(false);
 
   function deleteAttendee(id) {
     const newAttendeeList = attendeeList.filter(attendee => attendee.id !== id);
@@ -16,8 +16,6 @@ export function AttendeeListState({children}) {
     const editableAttendee = attendeeList.find(attendee => attendee.id === id);
     setEditableAttendee(editableAttendee);
     setShowEditModal(true);
-    console.log(id);
-    console.log(editableAttendee);
   }
 
   function saveEditableAttendee(Attendee) {
@@ -28,8 +26,21 @@ export function AttendeeListState({children}) {
     setEditableAttendee(undefined);
   }
 
+  const values = {
+    attendeeList, 
+    setAttendeeList, 
+    editAttendee, 
+    deleteAttendee, 
+    showEditModal, 
+    setShowEditModal, 
+    editableAttendee, 
+    saveEditableAttendee, 
+    loadingData, 
+    setLoadingData,
+  }  
+
   return (
-    <AttendeeListContext.Provider value={{attendeeList, setAttendeeList, editAttendee, deleteAttendee, showEditModal, setShowEditModal, editableAttendee, saveEditableAttendee}} >
+    <AttendeeListContext.Provider value={values} >
       {children}
     </AttendeeListContext.Provider>
   )

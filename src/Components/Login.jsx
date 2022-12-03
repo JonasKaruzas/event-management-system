@@ -87,7 +87,7 @@ export function Login() {
         <Input value={loginInfo.username} onChange={(e) => setLoginInfo({...loginInfo, username: e.target.value})} type='text' name='username' placeholder="Username" required />
         <Input value={loginInfo.password} onChange={(e) => setLoginInfo({...loginInfo, password: e.target.value})} type='password' name='password' placeholder="Password" required />
         <Button>LOG IN</Button>
-        {isLoginFailed && <div style={{color: 'red'}}>Login failed</div>}
+        {isLoginFailed && <div style={{color: 'red', textAlign: 'center'}}>Login failed: incorrect username or password </div>}
       </Form>
         <p style={{textAlign: 'center'}}>Login as</p>
         <Buttons>

@@ -18,8 +18,9 @@ export function LoginState({children}) {
       setIsLoginFailed(true);
       return;
     } 
-
+    
     const data = await response.json()
+    setIsLoginFailed(false);
     setLoggedInUser(data);
   }
     

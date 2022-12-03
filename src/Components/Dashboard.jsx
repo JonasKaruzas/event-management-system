@@ -6,6 +6,8 @@ import { AttendeeListContext } from "./AttendeeListState";
 import styled from "styled-components";
 import { EditModal } from "./EditModal";
 import {ScaleLoader} from "react-spinners";
+import { UserInfoMenu } from "./UserInfoMenu";
+import { LoginContext } from "./LoginState";
 
 const Title = styled.div`
   margin-top: 20px;
@@ -18,6 +20,7 @@ const Title = styled.div`
 
 export function Dashboard() {
   const {attendeeList, setAttendeeList, showEditModal, loadingData, setLoadingData} = useContext(AttendeeListContext);
+  const {loggedInUser} = useContext(LoginContext);
 
   useEffect(() => {
     setLoadingData(true);
@@ -31,8 +34,9 @@ export function Dashboard() {
 
   return (
     <>
+      <UserInfoMenu />
       <Title>Management<br />dashboard</Title>
-      <CreateAttendeeInputs />
+      {loggedInUser.type === 'admin' && <CreateAttendeeInputs />}
       {(attendeeList.length === 0 ) ? 
         <div style={{textAlign: 'center'}}>List is empty</div> :
         <AttendeeList>

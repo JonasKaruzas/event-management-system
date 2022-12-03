@@ -3,6 +3,7 @@ import styled from "styled-components"
 import deleteImg from "../Assets/Images/delete.svg";
 import pencilImg from "../Assets/Images/pencil.svg";
 import { AttendeeListContext } from "./AttendeeListState";
+import { LoginContext } from "./LoginState";
 
 const Card = styled.div`
   width: 100%;
@@ -120,16 +121,19 @@ const Button = styled.button`
 export function AttendeeListItem( {attendee} ) {
   const [hoverState, setHoverState] = useState(false);
   const {editAttendee, deleteAttendee} = useContext(AttendeeListContext);
+  const {loggedInUser} = useContext(LoginContext);
 
   return (
     <Card onMouseEnter={() => setHoverState(true)} onMouseLeave={() => setHoverState(false)}>
       <Name>{attendee.firstName} {attendee.lastName}</Name>
       <Email>{attendee.email}</Email>
       <Age>{attendee.age}</Age>
-      <ButtonContainer className={(hoverState ? ' show' : '')}>
-        <Button onClick={() => editAttendee(attendee.id)} edit style={{marginRight: 10}}><img src={pencilImg} alt='edit' /></Button>
-        <Button onClick={() => deleteAttendee(attendee.id)} delete><img src={deleteImg} alt='delete' /></Button>
-      </ButtonContainer>
+      {loggedInUser.type !== 'viewer' && 
+        <ButtonContainer className={(hoverState ? ' show' : '')}>
+          <Button onClick={() => editAttendee(attendee.id)} edit style={{marginRight: 10}}><img src={pencilImg} alt='edit' /></Button>
+          <Button onClick={() => deleteAttendee(attendee.id)} delete><img src={deleteImg} alt='delete' /></Button>
+        </ButtonContainer>
+      }
     </Card>
     )
   }

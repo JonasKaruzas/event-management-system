@@ -48,4 +48,16 @@ function updateAttendee(id, firstName, lastName, email, age) {
   });
 }
 
-module.exports = { getAll, addAttendee, deleteAttendee, updateAttendee };
+function login({ username, password }) {
+  return new Promise((res, rej) => {
+    const sql = `SELECT username, type FROM Users WHERE username = '${username}' AND password = '${password}'`;
+    db.get(sql, [], (err, row) => {
+      if (err) {
+        rej("User or password not found");
+      }
+      res(row);
+    });
+  });
+}
+
+module.exports = { getAll, addAttendee, deleteAttendee, updateAttendee, login };

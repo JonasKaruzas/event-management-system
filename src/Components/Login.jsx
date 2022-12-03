@@ -1,5 +1,6 @@
-import { useRef } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
+import { LoginContext } from "./LoginState"
 
 const Title = styled.div`
   margin-top: 20px;
@@ -58,32 +59,42 @@ const Button = styled.button`
 
 `
 
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+`
+
 export function Login() {
+  const [loginInfo, setLoginInfo] = useState({username: '', password: ''});
+  const {login, isLoginFailed} = useContext(LoginContext);
 
-  const username = useRef();
-  const password = useRef();
-
-  function submitHandler() {
-    console.log('submit');
-    console.log(username);
-    console.log(password);
+  function submitHandler(e) {
+    e.preventDefault();
+    login(loginInfo);
+    e.target.reset();
   }
 
   return (
     <>
     <Title>Welcome to the event<br />management system</Title>
-      <Form onSubmit={submitHandler}> 
-        <Input ref={username} type='text' name='username' placeholder="Username" required />
-        <Input ref={password} type='text' name='password' placeholder="Password" required />
+      <Form onSubmit={(e) => submitHandler(e)}> 
+        <Input value={loginInfo.username} onChange={(e) => setLoginInfo({...loginInfo, username: e.target.value})} type='text' name='username' placeholder="Username" required />
+        <Input value={loginInfo.password} onChange={(e) => setLoginInfo({...loginInfo, password: e.target.value})} type='password' name='password' placeholder="Password" required />
         <Button>LOG IN</Button>
-        <p style={{marginBottom: 0, textAlign: 'center'}}>Login as</p>
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-          <Button className="small">Admin</Button>
-          <Button className="small">Editor</Button>
-          <Button className="small">Viewer</Button>
-        </div>
+        {isLoginFailed && <div style={{color: 'red'}}>Login failed</div>}
       </Form>
-
+        <p style={{textAlign: 'center'}}>Login as</p>
+        <Buttons>
+          <Button onClick={() => setLoginInfo({username: 'admin', password: 'Adm1n!'})} className="small">Admin</Button>
+          <Button onClick={() => setLoginInfo({username: 'editor', password: 'Ed1tor!'})} className="small">Editor</Button>
+          <Button onClick={() => setLoginInfo({username: 'viewer', password: 'V1ewer!'})} className="small">Viewer</Button>
+        </Buttons>
     </>
   )
 }

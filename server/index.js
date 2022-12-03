@@ -4,7 +4,7 @@ const app = express();
 const port = 5000;
 
 app.use(bodyParser.json());
-const { getAll, addAttendee, deleteAttendee, updateAttendee } = require("./db_handler");
+const { getAll, addAttendee, deleteAttendee, updateAttendee, login } = require("./db_handler");
 
 app.get("/attendees", async (req, res) => {
   const data = await getAll();
@@ -28,6 +28,17 @@ app.put("/attendees/:id", async (req, res) => {
   const body = req.body;
   const data = await updateAttendee(id, body.firstName, body.lastName, body.email, body.age);
   res.send(data);
+});
+
+app.post("/users", async (req, res) => {
+  const body = req.body;
+  const ats = await login(body);
+  if (ats === undefined) {
+    res.status(401);
+    res.send("User or password not found");
+  } else {
+    res.send(ats);
+  }
 });
 
 app.listen(port, () => {

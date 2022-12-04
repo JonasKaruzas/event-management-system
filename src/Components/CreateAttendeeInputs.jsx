@@ -71,17 +71,16 @@ export function CreateAttendeeInputs() {
     }
 
     addAttendee(newAttendee)
-
     e.target.reset();
   }
 
   return (
-      <Form onSubmit={submitHandler}> 
-        <Input ref={firstName} type='text' name='firstName' placeholder="First name" required />
-        <Input ref={lastName} type='text' name='lastName' placeholder="Last name" required />
-        <Input ref={email} type='email' name='email' placeholder="Email" required />
-        <Input ref={age} type='number' name='age' placeholder="Age" min="14" max="99" required />
-        <Button>ADD</Button>
-      </Form>
+    <Form onSubmit={submitHandler}> 
+      <Input ref={firstName} type='text' name='firstName' placeholder="First name" required />
+      <Input ref={lastName} type='text' name='lastName' placeholder="Last name" required />
+      <Input ref={email} type='email' name='email' placeholder="Email" required />
+      <Input ref={age} type='number' name='age' placeholder="Age" min="14" max="99" required />
+      <Button>ADD</Button>
+    </Form>
   )
 }

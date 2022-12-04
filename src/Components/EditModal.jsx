@@ -42,12 +42,12 @@ const Form = styled.form`
   gap: 10px;
   padding-bottom: 60px;
 
-@media (max-width: 850px) {
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 400px;
-}
+  @media (max-width: 850px) {
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+  }
 `
 
 const Input = styled.input`
@@ -60,9 +60,9 @@ const Input = styled.input`
     outline: none;
   }
 
-@media (max-width: 850px) {
-  width: 100%;
-}
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
 const Button = styled.button`
@@ -87,9 +87,8 @@ const Button = styled.button`
 
 
 export function EditModal() {
-  
   const {setShowEditModal, editableAttendee, saveEditableAttendee} = useContext(AttendeeListContext);
-    const [formData, setFormData] = useState(editableAttendee);
+  const [formData, setFormData] = useState(editableAttendee);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -97,7 +96,6 @@ export function EditModal() {
     setShowEditModal(false);
   }
   
-
   return ReactDOM.createPortal(
     <Modal>
       <Overlay onClick={() => setShowEditModal(false)}></Overlay>

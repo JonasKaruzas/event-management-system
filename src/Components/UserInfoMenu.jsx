@@ -6,7 +6,6 @@ import editor from "../Assets/Images/account-edit.svg";
 import viewer from "../Assets/Images/account-eye.svg";
 import { AttendeeListContext } from "./AttendeeListState";
 
-
 const Container = styled.div`
   position: fixed;
   top: 10px;
@@ -29,14 +28,14 @@ const Container = styled.div`
     height: 100px;
     width: 150px;
     border-radius: 15px;
-  ` }
+    `
+  }
 `
   
 const ImgIcon = styled.img`
-filter: invert(100%);
+  filter: invert(100%);
   width: 20px;
   height: 20px;
-
 ` 
 const Button = styled.button`
   padding: 6px 12px;
@@ -88,15 +87,15 @@ export function UserInfoMenu() {
 
   return (
     <Container onClick={toggleMenu} showMenu={showMenu}>
-        <div>
-          <ImgIcon src={getIcon()} /> 
-        </div>
-        {showMenu && 
-          <>
-            <div>{loggedInUser.username}</div>
-            <Button onClick={logOut}>Logout</Button>
-          </> }
+      <div>
+        <ImgIcon src={getIcon()} /> 
+      </div>
+      {showMenu && 
+        <>
+          <div>{loggedInUser.username}</div>
+          <Button onClick={logOut}>Logout</Button>
+        </>
+      }
     </Container>
   )
-
 } 

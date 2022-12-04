@@ -88,7 +88,7 @@ export function Login() {
 
   return (
     <>
-    <Title>Welcome to the event<br />management system</Title>
+      <Title>Welcome to the event<br />management system</Title>
       <Form onSubmit={(e) => submitHandler(e)}> 
         <Input value={loginInfo.username} onChange={(e) => setLoginInfo({...loginInfo, username: e.target.value})} type='text' name='username' placeholder="Username" required />
         <Input value={loginInfo.password} onChange={(e) => setLoginInfo({...loginInfo, password: e.target.value})} type='password' name='password' placeholder="Password" required />

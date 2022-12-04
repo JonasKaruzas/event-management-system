@@ -13,9 +13,9 @@ const Card = styled.div`
   @media (max-width: 850px) {
     display: none;
   }
-  `
+`
   
-  const Title = styled.div`
+const Title = styled.div`
   font-size: 40px;
   font-weight: 500;
   padding-bottom: 40px;
@@ -43,7 +43,7 @@ export function AttendeeList({children}) {
         <ListHeader>Email</ListHeader>
         <ListHeader>Age</ListHeader>
       </Card>
-        {children}
+      {children}
     </div>
   )
 }

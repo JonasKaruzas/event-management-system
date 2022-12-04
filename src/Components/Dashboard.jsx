@@ -18,7 +18,6 @@ const Title = styled.div`
   color: #497174;
 `
 
-
 export function Dashboard() {
   const {attendeeList, setAttendeeList, showEditModal, loadingData, setLoadingData, searchedAndSortedList} = useContext(AttendeeListContext);
   const {loggedInUser} = useContext(LoginContext);

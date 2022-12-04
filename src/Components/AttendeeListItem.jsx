@@ -45,9 +45,9 @@ const Name = styled.div`
       font-weight: 400;
     }
   }
-  `
+`
   
-  const Email = styled.div`
+const Email = styled.div`
   flex: 1;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -59,9 +59,9 @@ const Name = styled.div`
       font-weight: 400;
     }
   }
-  `
+`
   
-  const Age = styled.div`
+const Age = styled.div`
   font-weight: 600;
   font-size: 15px;
   
@@ -74,28 +74,27 @@ const Name = styled.div`
 `
 
 const ButtonContainer = styled.div`
-    display: flex;
-    margin-left: 0px;
-    width: 0px;
-    overflow: hidden;
-    transform: translateX(100px);
-    transition: transform 0.3s, width 0.3s;
+  display: flex;
+  margin-left: 0px;
+  width: 0px;
+  overflow: hidden;
+  transform: translateX(100px);
+  transition: transform 0.3s, width 0.3s;
+  
+  &.show {
+    margin-left: 10px;
+    width: 104px;
+    transform: translateX(0);
+  }
+  
+  @media (max-width: 850px) {
+    width: 104px;
+    transform: translateX(0px);
     
     &.show {
-      margin-left: 10px;
-      width: 104px;
-      transform: translateX(0);
+      margin-left: 0px;
     }
-    
-    @media (max-width: 850px) {
-      width: 104px;
-      transform: translateX(0px);
-      
-      &.show {
-        margin-left: 0px;
-    }
-   }
-
+  }
 `
 
 const Button = styled.button`
@@ -135,6 +134,6 @@ export function AttendeeListItem( {attendee} ) {
         </ButtonContainer>
       }
     </Card>
-    )
-  }
+  )
+}
   

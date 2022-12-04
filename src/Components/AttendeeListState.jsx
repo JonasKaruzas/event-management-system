@@ -19,6 +19,7 @@ export function AttendeeListState({children}) {
       },
       body: JSON.stringify(Attendee),
     })  
+    
     const attendees = await response.json();
     setAttendeeList(attendees);
   }
@@ -46,6 +47,7 @@ export function AttendeeListState({children}) {
       },
       body: JSON.stringify(Attendee),
     })  
+    
     const attendees = await response.json();
     setAttendeeList(attendees);
   }
@@ -67,8 +69,7 @@ export function AttendeeListState({children}) {
 
   useEffect(() => {
     const searchResult = attendeeList.filter(
-      attendee => (attendee.firstName.toLowerCase() + attendee.lastName.toLowerCase()).includes(searchInput.toLowerCase()) 
-      )
+      attendee => (attendee.firstName.toLowerCase() + attendee.lastName.toLowerCase()).includes(searchInput.toLowerCase()))
     const sortedList = sortList(sortInput, searchResult);
     setSearchedAndSortedList(sortedList);
   },[attendeeList, searchInput, sortInput])

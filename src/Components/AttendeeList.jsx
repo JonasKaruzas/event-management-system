@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { SearchAndSort } from "./SearchAndSort";
 
 const Card = styled.div`
   width: 100%;
@@ -36,6 +37,7 @@ export function AttendeeList({children}) {
   return (
     <div ref={animationParent}>
       <Title>Attendee list</Title>
+      <SearchAndSort />
       <Card>
         <ListHeader>Name</ListHeader>
         <ListHeader>Email</ListHeader>

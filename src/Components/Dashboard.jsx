@@ -18,8 +18,9 @@ const Title = styled.div`
   color: #497174;
 `
 
+
 export function Dashboard() {
-  const {attendeeList, setAttendeeList, showEditModal, loadingData, setLoadingData} = useContext(AttendeeListContext);
+  const {attendeeList, setAttendeeList, showEditModal, loadingData, setLoadingData, searchedAndSortedList} = useContext(AttendeeListContext);
   const {loggedInUser} = useContext(LoginContext);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export function Dashboard() {
           <div style={{textAlign: 'center', marginTop: 20}}>
             <ScaleLoader color={'#497174'} /> 
           </div> :
-            attendeeList.map(attendee => <AttendeeListItem key={attendee.id} attendee={attendee} />)
+            searchedAndSortedList.map(attendee => <AttendeeListItem key={attendee.id} attendee={attendee} />)
           }
         </AttendeeList> 
       }

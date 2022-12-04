@@ -26,6 +26,12 @@ const Form = styled.form`
 const Input = styled.input`
   padding: 10px;
   width: 100%;
+  border: 1px solid #497174;
+
+  &:focus {
+    background-color: #EFF5F5;
+    outline: none;
+  }
 `
 
 const Button = styled.button`
@@ -89,7 +95,7 @@ export function Login() {
         <Button>LOG IN</Button>
         {isLoginFailed && <div style={{color: 'red', textAlign: 'center'}}>Login failed: incorrect username or password </div>}
       </Form>
-        <p style={{textAlign: 'center'}}>Login as</p>
+        <p style={{textAlign: 'center'}}>Fill login info for:</p>
         <Buttons>
           <Button onClick={() => setLoginInfo({username: 'admin', password: 'Adm1n!'})} className="small">Admin</Button>
           <Button onClick={() => setLoginInfo({username: 'editor', password: 'Ed1tor!'})} className="small">Editor</Button>

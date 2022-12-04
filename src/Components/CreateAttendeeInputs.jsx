@@ -20,7 +20,13 @@ const Form = styled.form`
 const Input = styled.input`
   padding: 10px;
   width: 160px;
-  
+  border: 1px solid #497174;
+
+  &:focus {
+    background-color: #EFF5F5;
+    outline: none;
+  }
+
   @media (max-width: 850px) {
     width: 100%;
   }
@@ -74,7 +80,7 @@ export function CreateAttendeeInputs() {
         <Input ref={firstName} type='text' name='firstName' placeholder="First name" required />
         <Input ref={lastName} type='text' name='lastName' placeholder="Last name" required />
         <Input ref={email} type='email' name='email' placeholder="Email" required />
-        <Input ref={age} type='number' name='age' placeholder="Age" required />
+        <Input ref={age} type='number' name='age' placeholder="Age" min="14" max="99" required />
         <Button>ADD</Button>
       </Form>
   )

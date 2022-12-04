@@ -13,11 +13,24 @@ const SearchSortContainer = styled.div`
 const Input = styled.input`
   padding: 10px;
   width: 160px;
+  border: 1px solid #497174;
+
+  &:focus {
+    background-color: #EFF5F5;
+    outline: none;
+  }
 `
 const Select = styled.select`
   margin-left: 20px;
   padding: 10px;
-  width: 100px;
+  width: 120px;
+  border: 1px solid #497174;
+
+  &:focus {
+    background-color: #EFF5F5;
+    outline: none;
+  }
+
 `
 
 export function SearchAndSort() {

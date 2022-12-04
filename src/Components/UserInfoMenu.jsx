@@ -4,6 +4,7 @@ import { LoginContext } from "./LoginState";
 import admin from "../Assets/Images/account-cog.svg";
 import editor from "../Assets/Images/account-edit.svg";
 import viewer from "../Assets/Images/account-eye.svg";
+import { AttendeeListContext } from "./AttendeeListState";
 
 
 const Container = styled.div`
@@ -12,7 +13,8 @@ const Container = styled.div`
   left: 10px;
   height: 40px;
   width: 40px;
-  background-color: #EFF5F5;
+  background-color: #497174;
+  color: white;
   border-radius: 25px;
   box-shadow: 0px 5px 10px 0px #a4a4a480;
   display: flex;
@@ -31,6 +33,7 @@ const Container = styled.div`
 `
   
 const ImgIcon = styled.img`
+filter: invert(100%);
   width: 20px;
   height: 20px;
 
@@ -59,6 +62,7 @@ const Button = styled.button`
 export function UserInfoMenu() {
   const { loggedInUser, setLoggedInUser } = useContext(LoginContext);
   const [showMenu, setShowMenu] = useState(false);
+  const {setSearchInput, setSortInput} = useContext(AttendeeListContext);
 
   function toggleMenu(e) {
     setShowMenu(prev => !prev)
@@ -76,6 +80,12 @@ export function UserInfoMenu() {
     }
   }
 
+  function logOut() {
+    setLoggedInUser({});
+    setSearchInput('');
+    setSortInput('');
+  }
+
   return (
     <Container onClick={toggleMenu} showMenu={showMenu}>
         <div>
@@ -84,7 +94,7 @@ export function UserInfoMenu() {
         {showMenu && 
           <>
             <div>{loggedInUser.username}</div>
-            <Button onClick={() => setLoggedInUser({})}>Logout</Button>
+            <Button onClick={logOut}>Logout</Button>
           </> }
     </Container>
   )

@@ -53,6 +53,12 @@ const Form = styled.form`
 const Input = styled.input`
   padding: 10px;
   width: 160px;
+  border: 1px solid #497174;
+
+  &:focus {
+    background-color: #EFF5F5;
+    outline: none;
+  }
 
 @media (max-width: 850px) {
   width: 100%;
@@ -101,7 +107,7 @@ export function EditModal() {
           <Input type='text' name='firstName' value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} required />
           <Input type='text' name='lastName' value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} required />
           <Input type='email' name='email' value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} required />
-          <Input type='number' name='age' value={formData.age} onChange={(e) => setFormData({...formData, age: e.target.value})} required />
+          <Input type='number' name='age' min="14" max="99" value={formData.age} onChange={(e) => setFormData({...formData, age: e.target.value})} required />
           <Button>Save</Button>
         </Form>
       </Content>

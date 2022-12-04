@@ -32,6 +32,7 @@ const Input = styled.input`
     outline: none;
   }
 `
+
 const Select = styled.select`
   margin-left: 20px;
   padding: 10px;
@@ -39,13 +40,14 @@ const Select = styled.select`
   border: 1px solid #497174;
 
   @media (max-width: 850px) {
-    width: 326px;
+    flex: 1;
+    width: auto;
   }
 
   &:focus {
     background-color: #EFF5F5;
     outline: none;
-
+ 
   }
 
 `
@@ -57,8 +59,7 @@ export function SearchAndSort() {
     <SearchSortContainer>
       <Input type={'text'} placeholder={'Search name'} value={searchInput} onChange={(e) => setSearchInput(e.target.value)}/>
       <form >
-        <label>
-          Sort by:
+        <label>Sort by:</label>
           <Select onChange={(e) => setSortInput(e.target.value)} value={sortInput}>
             <option disabled value=""></option>
             <option value="name-asc">First name ↓</option>
@@ -66,7 +67,6 @@ export function SearchAndSort() {
             <option value="age-asc">Age ↓</option>
             <option value="age-desc">Age ↑</option>
           </Select>
-        </label>
       </form>
     </SearchSortContainer>
   )

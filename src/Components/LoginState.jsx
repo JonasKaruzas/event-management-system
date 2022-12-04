@@ -1,8 +1,34 @@
 import { createContext, useState } from "react";
 export const LoginContext = createContext();
 
+const useLocalStorage = (keyName, defaultValue) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const value = window.localStorage.getItem(keyName);
+
+      if (value) {
+        return JSON.parse(value);
+      } else {
+        window.localStorage.setItem(keyName, JSON.stringify(defaultValue));
+        return defaultValue;
+      }
+    } catch (err) {
+      return defaultValue;
+    }
+  });
+
+  const setValue = newValue => {
+    try {
+      window.localStorage.setItem(keyName, JSON.stringify(newValue));
+    } catch (err) {}
+    setStoredValue(newValue);
+  };
+
+  return [storedValue, setValue];
+};
+  
 export function LoginState({children}) {
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useLocalStorage('EMSUser',{});
   const [isLoginFailed, setIsLoginFailed] = useState(false);
  
   async function login(user) {

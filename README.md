@@ -2,8 +2,12 @@
 
 In the project directory, run:
 
-### `cd server`
+## `npm install`
 
-### `npm start`
+## `cd server`
+
+## `npm install`
+
+## `npm start`
 
 This runs both server and react app concurrently.

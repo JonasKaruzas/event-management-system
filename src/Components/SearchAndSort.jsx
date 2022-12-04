@@ -8,12 +8,24 @@ const SearchSortContainer = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `
 
 const Input = styled.input`
   padding: 10px;
   width: 160px;
   border: 1px solid #497174;
+
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 
   &:focus {
     background-color: #EFF5F5;
@@ -26,9 +38,14 @@ const Select = styled.select`
   width: 120px;
   border: 1px solid #497174;
 
+  @media (max-width: 850px) {
+    width: 326px;
+  }
+
   &:focus {
     background-color: #EFF5F5;
     outline: none;
+
   }
 
 `
